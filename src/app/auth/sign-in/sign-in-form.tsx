@@ -3,12 +3,21 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { selfUseFormState } from "@/hooks/self-use-form-state";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { signInfWithEmailAndPasswordAction } from "./actions";
 
 export default function SignInForm() {
+  const router = useRouter();
+
+  const [{ success, message, errors }, handleSubmit, isPending] =
+    selfUseFormState(signInfWithEmailAndPasswordAction, () => {
+      router.push("/");
+    });
   return (
     <div className="space-y-4">
-      <form className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-1">
           <Label htmlFor="email">E-mail</Label>
           <Input id="email" name="email" type="text" />
