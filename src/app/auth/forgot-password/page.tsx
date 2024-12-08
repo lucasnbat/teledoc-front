@@ -14,7 +14,7 @@ export default function ForgotPasswordPage() {
   const router = useRouter();
   const [{ errors, message, success }, handleSubmit, isPending] =
     selfUseFormState(requestPasswordRecoverAction, () => {
-      router.push("/auth/sign-in");
+      router.push("/auth/reset-password");
     });
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

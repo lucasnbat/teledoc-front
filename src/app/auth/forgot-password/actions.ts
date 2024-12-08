@@ -4,14 +4,14 @@ import { z } from "zod";
 import { HTTPError } from "ky";
 import { requestPasswordRecover } from "@/http/request-password-recover";
 
-const signInSchema = z.object({
+const forgotPasswordSchema = z.object({
   email: z.string().email({ message: "Por favor, insira um e-mail válido" }),
 })
 
 export async function requestPasswordRecoverAction(
   data: FormData
 ) {
-  const result = signInSchema.safeParse(Object.fromEntries(data))
+  const result = forgotPasswordSchema.safeParse(Object.fromEntries(data))
 
   if (!result.success) {
     const errors = result.error.flatten().fieldErrors
