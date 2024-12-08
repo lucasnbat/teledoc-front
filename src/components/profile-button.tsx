@@ -23,7 +23,7 @@ export async function ProfileButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-4 outline-none">
-        <div className="flex flex-col items-end">
+        <div className="hidden md:flex flex-col items-end">
           <span className="text-sm font-medium">
             {patientFinded.patientName}
           </span>
