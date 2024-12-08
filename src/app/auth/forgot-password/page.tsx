@@ -48,6 +48,10 @@ export default function ForgotPasswordPage() {
       <Button type="submit" className="w-full" variant="link" asChild size="sm">
         <Link href="/auth/sign-in">Logar ao invés disso</Link>
       </Button>
+
+      <p className="absolute bottom-4 left-4 text-xs text-transparent select-text">
+        Bora moer!!
+      </p>
     </form>
   );
 }
