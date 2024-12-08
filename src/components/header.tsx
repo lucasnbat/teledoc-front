@@ -5,7 +5,7 @@ import { ProfileButton } from "./profile-button";
 
 export async function Header() {
   return (
-    <div className="mx-auto flex max-w-[1200px] items-center justify-between">
+    <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4">
       <div className="flex items-center gap-3">
         <Image src={logo} className="size-6 dark:invert" alt="logo" />
       </div>
@@ -29,10 +29,10 @@ export async function Header() {
         Chamada de vídeo
       </Link>
       <Link
-        href="/"
+        href="/doctors"
         className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
       >
-        Doctors
+        Médicos
       </Link>
 
       <div>
