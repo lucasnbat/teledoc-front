@@ -1,11 +1,12 @@
 import { auth } from "@/auth/auth";
-import { DropdownMenu, DropdownMenuTrigger } from "./ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
+  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "@radix-ui/react-dropdown-menu";
-import { ChevronDown } from "lucide-react";
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "./ui/avatar";
+import { ChevronDown, LogOut } from "lucide-react";
 
 function getInitials(name: string): string {
   const initials = name
@@ -29,19 +30,22 @@ export async function ProfileButton() {
           <span className="text-xs text-muted-foreground">
             {patientFinded.patientEmail}
           </span>
-          <Avatar className="size-8">
-            {patientFinded.patientName && (
-              <AvatarFallback>
-                {getInitials(patientFinded.patientName)}
-              </AvatarFallback>
-            )}
-          </Avatar>
-          <ChevronDown className="size-4 text-muted-foreground" />
         </div>
+        <Avatar className="size-8">
+          {patientFinded.patientName && (
+            <AvatarFallback>
+              {getInitials(patientFinded.patientName)}
+            </AvatarFallback>
+          )}
+        </Avatar>
+        <ChevronDown className="size-4 text-muted-foreground" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>
-          <a href=""></a>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem asChild>
+          <a href="/api/auth/sign-out">
+            <LogOut className="mr-2 size-4" />
+            Sair
+          </a>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

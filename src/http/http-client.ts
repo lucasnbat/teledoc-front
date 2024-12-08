@@ -1,5 +1,5 @@
 import { env } from "@/env";
-import { CookiesFn, getCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 import ky from "ky";
 
 export const api = ky.create({
@@ -7,16 +7,15 @@ export const api = ky.create({
   hooks: {
     beforeRequest: [
       async (request) => {
-        let cookieStore: CookiesFn | undefined
+        let token: string | undefined
 
         if (typeof window === 'undefined') {
           // feature para permitir acesso do server side aos cookies
-          const { cookies: serverCookies } = await import('next/headers')
-          cookieStore = serverCookies
+          const { cookies } = await import('next/headers')
+          token = (await cookies()).get("token")?.value
+        } else {
+          const token = getCookie("token") as string | undefined
         }
-
-        const token = getCookie('token', { cookies: cookieStore })
-        console.log('Token dentro do http-client:', token)
 
         if (token) {
           request.headers.set('Authorization', `Bearer ${token}`)

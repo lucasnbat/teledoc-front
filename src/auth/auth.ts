@@ -8,7 +8,7 @@ export async function isAuthenticated() {
 
 export async function auth() {
   console.log('Chegou ao auth')
-  const token = (await cookies()).get('token')?.value
+  const token = (await cookies()).get("token")?.value
 
   if (!token) {
     redirect('/auth/sign-in')
@@ -17,10 +17,9 @@ export async function auth() {
   try {
     const { patientFinded } = await getPatientProfile()
 
-    console.log('patient: ', patientFinded)
-
     return { patientFinded }
-  } catch { }
-
-  redirect('api/auth/sign-in') // enviando para route handler que vai tirar o token
+  } catch (err) {
+    console.log("Erro de autenticação: ", err)
+    redirect("/auth/sign-in")
+  }
 }
