@@ -7,7 +7,6 @@ export async function isAuthenticated() {
 }
 
 export async function auth() {
-  console.log('Chegou ao auth')
   const token = (await cookies()).get("token")?.value
 
   if (!token) {
