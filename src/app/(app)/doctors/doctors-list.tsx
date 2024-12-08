@@ -1,15 +1,14 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { getDoctors } from "@/http/get-doctors";
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import Link from "next/link";
+import doctorAvatar from "@/app/assets/general-doctor.webp";
 
 export default async function DoctorsList() {
   const { doctors } = await getDoctors();
@@ -26,8 +25,9 @@ export default async function DoctorsList() {
             <Card className="flex flex-col justify-between items-center p-5 shadow-lg rounded-lg border">
               <CardHeader className="flex flex-col items-center gap-2">
                 <Avatar className="h-25 w-25">
-                  {doctor.avatarUrl && <AvatarImage src={doctor.avatarUrl} />}
-                  <AvatarFallback />
+                  <AvatarImage
+                    src={doctor.avatarUrl || doctorAvatar.src} // Corrigido aqui
+                  />
                 </Avatar>
                 <CardTitle className="text-lg font-semibold text-center">
                   {doctor.doctorName}
