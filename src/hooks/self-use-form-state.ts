@@ -1,5 +1,3 @@
-// TODO: configurar hook de disparo de funções e associar com o form
-
 import { FormEvent, useState, useTransition } from "react"
 
 interface FormState {

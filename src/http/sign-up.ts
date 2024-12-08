@@ -17,12 +17,16 @@ export async function signUp({
   password,
   phone,
 }: SignUpRequest): Promise<SignUpResponse> {
-  await api.post('patients', {
-    json: {
-      patientName: name,
-      patientEmail: email,
-      patientePassword: password,
-      patientPhone: phone,
-    },
-  })
+  try {
+    await api.post('patients', {
+      json: {
+        patientName: name,
+        patientEmail: email,
+        patientPhone: phone,
+        patientPassword: password,
+      },
+    })
+  } catch (error) {
+    console.error(error)
+  }
 }
