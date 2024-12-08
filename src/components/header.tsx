@@ -7,7 +7,9 @@ export async function Header() {
   return (
     <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4">
       <div className="items-center gap-3 flex">
-        <Image src={logo} className="size-6 dark:invert" alt="logo" />
+        <Link href="/">
+          <Image src={logo} className="size-6 dark:invert" alt="logo" />
+        </Link>
       </div>
 
       <nav className="flex sm:gap-10 md:gap-20 lg:gap-32">
