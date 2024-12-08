@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { getDoctors } from "@/http/get-doctors";
 import { AvatarFallback } from "@radix-ui/react-avatar";
-import { EyeIcon } from "lucide-react";
 import Link from "next/link";
 
 export default async function DoctorsList() {
@@ -34,10 +33,14 @@ export default async function DoctorsList() {
                   {doctor.doctorName}
                 </CardTitle>
                 <CardDescription className="flex flex-col">
-                  {/* colocar a especialização */}
+                  {doctor.speciality ? (
+                    <span>{doctor.speciality}</span>
+                  ) : (
+                    <span>{doctor.about}</span>
+                  )}
                 </CardDescription>
               </CardHeader>
-              <div className="flex items-center gap-1 text-sm text-gray-600 mt-[-2rem]">
+              <div className="flex items-center gap-1 text-sm text-gray-600 mt-[-1rem]">
                 <span>⭐ {doctor.rating}</span>
                 <span className="text-xs text-gray-400">
                   ({doctor.numberOfPatients} reviews)

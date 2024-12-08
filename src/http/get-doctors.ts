@@ -2,7 +2,7 @@ import { api } from './http-client'
 
 interface GetDoctorsResponse {
   doctors: {
-    doctorId: string
+    doctorId: string;
     doctorEmail: string;
     doctorName: string;
     doctorPhone: string;
@@ -12,6 +12,7 @@ interface GetDoctorsResponse {
     periodOfWork: string;
     about: string;
     avatarUrl: string | null;
+    speciality: string | null;
   }[]
 }
 
