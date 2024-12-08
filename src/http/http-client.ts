@@ -16,6 +16,7 @@ export const api = ky.create({
         }
 
         const token = getCookie('token', { cookies: cookieStore })
+        console.log('Token dentro do http-client:', token)
 
         if (token) {
           request.headers.set('Authorization', `Bearer ${token}`)

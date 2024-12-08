@@ -1,4 +1,4 @@
-import { api } from './http-client'
+import { api } from "./http-client"
 
 interface getPatientProfileResponse {
   patientFinded: {
@@ -10,9 +10,12 @@ interface getPatientProfileResponse {
 }
 
 export async function getPatientProfile() {
-  // token é capturado pelo middleware auth na rota da api
-  const result = await api.get('patient-profile')
-    .json<getPatientProfileResponse>()
+  try {
+    const result = await api.get('patient-profile').json<getPatientProfileResponse | any>()
+    return result
 
-  return result
+  } catch (error) {
+    console.log(error)
+  }
+
 }
