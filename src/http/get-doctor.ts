@@ -1,6 +1,6 @@
 import { api } from './http-client'
 
-interface GetDoctorResponse {
+export interface GetDoctorResponse {
   doctor: {
     doctorName: string;
     doctorPhone: string;

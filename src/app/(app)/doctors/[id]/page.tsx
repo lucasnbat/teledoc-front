@@ -1,14 +1,45 @@
+"use client"
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { getDoctor } from "@/http/get-doctor";
+import { getDoctor, GetDoctorResponse } from "@/http/get-doctor";
 import doctorAvatar from "@/app/assets/general-doctor.webp";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default async function AboutDoctor({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const { id } = params;
-  const { doctor } = await getDoctor(id);
+export default function AboutDoctor() {
+  const params = useParams(); // Obtém os parâmetros da URL
+  const [doctor, setDoctor] = useState<GetDoctorResponse["doctor"] | null>(
+    null
+  );
+  const [loading, setLoading] = useState(true);
+
+  const doctorId = Array.isArray(params?.id) ? params.id[0] : params.id; // Garante que seja string
+
+  useEffect(() => {
+    async function fetchDoctor() {
+      if (!doctorId) return;
+
+      try {
+        const { doctor } = await getDoctor(doctorId);
+        setDoctor(doctor);
+      } catch (error) {
+        console.error("Erro ao buscar informações do médico:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchDoctor();
+  }, [doctorId]);
+
+  if (loading) {
+    return (
+      <p className="text-center text-gray-500">Carregando informações...</p>
+    );
+  }
+
+  if (!doctor) {
+    return <p className="text-center text-red-500">Médico não encontrado.</p>;
+  }
 
   return (
     <div className="space-y-4 py-4">
