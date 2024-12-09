@@ -24,7 +24,7 @@ export default function SignUpForm() {
         <Image src={logo} className="h-8 dark:invert " alt="logo" />
         <p className="font-medium text-muted-foreground">Teledoc</p>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 w-full">
         {success === false && message && (
           <Alert variant="destructive">
             <AlertTriangle className="size-4" />
