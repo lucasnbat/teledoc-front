@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 import { signUpAction } from "./actions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertTriangle, Loader2 } from "lucide-react";
+import Image from "next/image";
+import logo from '@/app/assets/logo.svg'
 
 export default function SignUpForm() {
   const router = useRouter();
@@ -17,7 +19,11 @@ export default function SignUpForm() {
       router.push("/auth/sign-in");
     });
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 flex flex-col items-center">
+      <div className="flex items-center max-w-[100px]">
+        <Image src={logo} className="h-8 dark:invert " alt="logo" />
+        <p className="font-medium text-muted-foreground">Teledoc</p>
+      </div>
       <form onSubmit={handleSubmit} className="space-y-4">
         {success === false && message && (
           <Alert variant="destructive">

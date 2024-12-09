@@ -9,6 +9,9 @@ import { useRouter } from "next/navigation";
 import { signInfWithEmailAndPasswordAction } from "./actions";
 import { AlertTriangle, Loader2 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import logo from "@/app/assets/logo.svg";
+import { Avatar } from "@radix-ui/react-avatar";
+import Image from "next/image";
 
 export default function SignInForm() {
   const router = useRouter();
@@ -18,8 +21,12 @@ export default function SignInForm() {
       router.push("/");
     });
   return (
-    <div className="space-y-4">
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="space-y-4 flex flex-col items-center">
+      <div className="flex items-center max-w-[100px]">
+        <Image src={logo} className="h-8 dark:invert " alt="logo" />
+        <p className="font-medium text-muted-foreground">Teledoc</p>
+      </div>
+      <form onSubmit={handleSubmit} className="space-y-4 w-full">
         {success === false && message && (
           <Alert variant="destructive">
             <AlertTriangle className="size-4" />

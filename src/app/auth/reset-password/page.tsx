@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { AlertTriangle, Loader2 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { resetPasswordAction } from "./actions";
+import logo from "@/app/assets/logo.svg";
+import Image from "next/image";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -17,8 +19,12 @@ export default function ResetPasswordPage() {
       router.push("/auth/sign-in");
     });
   return (
-    <div className="space-y-4">
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="space-y-4 flex flex-col items-center">
+      <div className="flex items-center max-w-[100px]">
+        <Image src={logo} className="h-8 dark:invert " alt="logo" />
+        <p className="font-medium text-muted-foreground">Teledoc</p>
+      </div>
+      <form onSubmit={handleSubmit} className="space-y-4 w-full">
         {success === false && message && (
           <Alert variant="destructive">
             <AlertTriangle className="size-4" />
@@ -51,7 +57,11 @@ export default function ResetPasswordPage() {
 
         <div className="space-y-1">
           <Label htmlFor="password_confirmation">Confirmar senha</Label>
-          <Input id="password_confirmation" name="password_confirmation" type="password" />
+          <Input
+            id="password_confirmation"
+            name="password_confirmation"
+            type="password"
+          />
           {errors?.password_confirmation && (
             <p className="text-xs font-medium text-red-500 dark:text-red-400">
               {errors.password_confirmation[0]}
