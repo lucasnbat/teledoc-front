@@ -25,6 +25,9 @@
 ## Front-end
 
 * Entre na pasta principal do projeto (`teledoc-front/`);
+* Renomeie o `.env.example` para `.env` e insira uma URL base para as requisições
+  que serão feitas para o back-end;
+  * Ex: `"http://localhost:3333"` 
 * Execute `npm install` para instalar todas as dependências;
 * Feito isso, execute o comando `npm run start:dev` e acesse `http://localhost:3000`;
 * Vídeo demonstração: `demo-video.mkv`
