@@ -2,6 +2,7 @@
 
 ## Back-end
 
+* Todos os passos podem ser vistos no vídeo `demo-video.mkv`;
 * Primeiro, rode o comando `npm install` na pasta do projeto (`teledoc-api`)
 * Depois, busque o arquivo `compose-example.yml` e renomeie para `compose.yml`.
   Feito isso, configure o nome de usuário, senha e nome de banco que você prefere;
@@ -24,6 +25,7 @@
 
 ## Front-end
 
+* Todos os passos podem ser vistos no vídeo `demo-video.mkv`;
 * Entre na pasta principal do projeto (`teledoc-front/`);
 * Renomeie o `.env.example` para `.env` e insira uma URL base para as requisições
   que serão feitas para o back-end;
@@ -31,3 +33,5 @@
 * Execute `npm install` para instalar todas as dependências;
 * Feito isso, execute o comando `npm run start:dev` e acesse `http://localhost:3000`;
 * Vídeo demonstração: `demo-video.mkv`
+* Vídeo sobre como testar o back-end (veja após executar todos os passos para 
+  instalação da app): `https://github.com/lucasnbat/teledoc-api/blob/main/how-to-test.mkv`
